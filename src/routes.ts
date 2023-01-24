@@ -68,7 +68,7 @@ export async function appRoutes(app: FastifyInstance) {
 
         const completedHabits = day?.dayHabits.map((dayHabit=> {
             return dayHabit.habit_id;
-        }))
+        })) ?? []
 
         console.log(completedHabits)
 
@@ -137,7 +137,7 @@ export async function appRoutes(app: FastifyInstance) {
                     cast(count(*) as float) 
                     FROM day_habits DH
                     WHERE DH.day_id = D.id
-                ) as complited,
+                ) as completed,
                 (
                     SELECT 
                         cast(count(*) as float) 
